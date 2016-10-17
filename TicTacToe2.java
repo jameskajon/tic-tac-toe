@@ -3,13 +3,12 @@
  * Write a description of class TicTacToe here.
  * 
  * @author Jimmy Kajon
- * @version 0.1
+ * @version 2.0
  */
 
 import java.util.*;
 
-// this comment is a test for git
-// second test because i needed to readd this file ond the package file to commit for first test
+
 
 public class TicTacToe2
 {
@@ -23,11 +22,14 @@ public class TicTacToe2
         
         while (!(boardFilled() && checkWin())) { // deMorgans for fun
             player = getPlayer(player);
-            drawBoard();
+
+            //System.out.print(Arrays.toString(board));
             System.out.println (player + "'s turn");
             getInput(player);
-            System.out.println(player + " WINS!");
+            System.out.println(drawBoard());
+            
         }
+            System.out.println(player + " WINS!");
         
         /*
         for (int i = 0; i<9; i++) {
