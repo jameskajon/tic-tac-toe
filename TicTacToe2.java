@@ -17,10 +17,10 @@ public class TicTacToe2
     public static void main(String[] args) {
         initBoard();
         System.out.println (drawBoard());
-        String player = "X";
+        String player = "O"; // set to opposit of starting player
         
         
-        while (!(boardFilled() && checkWin())) { // deMorgans for fun
+        while (!boardFilled() && !checkWin()) {
             player = getPlayer(player);
 
             //System.out.print(Arrays.toString(board));
