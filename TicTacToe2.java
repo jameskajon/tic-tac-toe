@@ -8,7 +8,8 @@
 
 import java.util.*;
 
-
+//worked on standardization: had drawBoard already, converted to getMark, want to see others getInput and main before changing getInput, checkMove is part of getInput and can only be detached messily.
+// TODO breaks if input is: 1 2 3 4 5 6 7 8 9. by excluding it or including it
 
 public class TicTacToe2
 {
@@ -17,21 +18,20 @@ public class TicTacToe2
     public static void main(String[] args) {
         initBoard();
         System.out.println (drawBoard());
-        String player = "O"; // set to opposit of starting player
-        
+        String mark = "O"; // set to opposit of starting player
         
         while (!boardFilled() && !checkWin()) {
-            player = getPlayer(player);
+            mark = getMark(mark);
 
             //System.out.print(Arrays.toString(board));
-            System.out.println (player + "'s turn");
-            getInput(player);
+            System.out.println (mark + "'s turn");
+            getInput(mark);
             System.out.println(drawBoard());
             
         }
         
         if (checkWin()) {
-            System.out.println(player + " WINS!");
+            System.out.println(mark + " WINS!");
         } else {
             System.out.println("TIE :(");
         }
@@ -62,31 +62,31 @@ public class TicTacToe2
      * @return positon in board array+1 as int
      */
 
-    public static void getInput(String player) {
+    public static void getInput(String mark) {
         int posInput = 0;
         try {
             posInput = input.nextInt();
         }catch(InputMismatchException exception){
             System.out.println("choose a postion on the board with the corresponding numbers (1 through 9 inclusive)");
             input.next();
-            getInput(player);
+            getInput(mark);
         }
         
         if( Arrays.asList(1,2,3,4,5,6,7,8,9).contains(posInput) ) {
             try {
                 if( Arrays.asList(1,2,3,4,5,6,7,8,9).contains(Integer.parseInt(board[posInput-1])) ) {
-                    board[posInput-1] = player;
+                    board[posInput-1] = mark;
                 } else {
                     System.out.println("input needs to be a number between 1 and 9 inclusive // when does this happen? TELL ME!"); // I think this try is useless.  I think it is the same as the try before it.
-                    getInput(player);
+                    getInput(mark);
                 }
             } catch (NumberFormatException exception) {
                 System.out.println("can't place in the same place twice");
-                getInput(player);
+                getInput(mark);
             }
         } else {
             System.out.println("input needs to be a number between 1 and 9 inclusive");
-            getInput(player);
+            getInput(mark);
         }
         
     }
@@ -150,14 +150,20 @@ public class TicTacToe2
         return false;
     }
     
-    public static String getPlayer(String curentPlayer) {
-        String pl = curentPlayer;
-        if (curentPlayer == "X") {
-            pl =  "O";
-        } else if (curentPlayer == "O") {
-            pl =  "X";
+    
+    
+    /**
+     * gets the mark of the current player based on the pervious turns mark as a string
+     * @return opposit of input "X" or "O"
+     */
+    public static String getMark(String curentMark) {
+        String mark = curentMark;
+        if (curentMark == "X") {
+            mark =  "O";
+        } else if (curentMark == "O") {
+            mark =  "X";
         }
-        return pl;
+        return mark;
     }
     
     
