@@ -11,7 +11,7 @@ import java.util.*;
 
 public class TicTacToe
 {
-    static String[] board = new String[9];
+    public static String[] board = new String[9];
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         initBoard();
@@ -125,4 +125,15 @@ public class TicTacToe
         }
         return null;
     }
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 }

@@ -45,23 +45,26 @@ public class TicTacToeTest
     
 
     
-
+    /*
     @Test
     public void turnTest()
     {
         assertEquals("O", TicTacToe.turn(15));
         assertEquals("X", TicTacToe.turn(16));
     }
-    
+    */
     
     @Test
     public void drawBoardTest() {
         assertEquals(" null | null | null \n---|---|---\n null | null | null \n---|---|---\n null | null | null ", TicTacToe.drawBoard());
         TicTacToe.initBoard();
         assertEquals(" 1 | 2 | 3 \n---|---|---\n 4 | 5 | 6 \n---|---|---\n 7 | 8 | 9 ", TicTacToe.drawBoard());
+        
+        TicTacToe.board = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
+        assertEquals(" X | O | X \n---|---|---\n O | X | O \n---|---|---\n X | O | X ", TicTacToe.drawBoard());
     }
     
-    
+    // TODO fix seting value with dot notation
     
     
 }
