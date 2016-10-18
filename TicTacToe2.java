@@ -35,24 +35,7 @@ public class TicTacToe2
         } else {
             System.out.println("TIE :(");
         }
-        /*
-        for (int i = 0; i<9; i++) {
-            if (checkWin() != null) {
 
-
-            } else {
-                int posInput = 0;
-                System.out.print(getMark(i) + "'s Move:");
-                posInput = getInput();
-    
-
-            }
-            System.out.println (drawBoard());
-            if (i==8) {
-                System.out.print("TIE");
-            }
-        }
-        */
     }
 
     /**
@@ -79,13 +62,14 @@ public class TicTacToe2
      * @return positon in board array+1 as int
      */
 
-    public static int getInput(String player) {
+    public static void getInput(String player) {
         int posInput = 0;
         try {
             posInput = input.nextInt();
         }catch(InputMismatchException exception){
-            System.out.println("input needs to be a number between 1 and 9 inclusive");
+            System.out.println("choose a postion on the board with the corresponding numbers (1 through 9 inclusive)");
             input.next();
+            getInput(player);
         }
         
         if( Arrays.asList(1,2,3,4,5,6,7,8,9).contains(posInput) ) {
@@ -93,19 +77,18 @@ public class TicTacToe2
                 if( Arrays.asList(1,2,3,4,5,6,7,8,9).contains(Integer.parseInt(board[posInput-1])) ) {
                     board[posInput-1] = player;
                 } else {
-                    //i--;
-                    System.out.println("input needs to be a number between 1 and 9 inclusive");
+                    System.out.println("input needs to be a number between 1 and 9 inclusive // when does this happen? TELL ME!"); // I think this try is useless.  I think it is the same as the try before it.
+                    getInput(player);
                 }
             } catch (NumberFormatException exception) {
-                //i--;
                 System.out.println("can't place in the same place twice");
+                getInput(player);
             }
         } else {
-            //i--;
             System.out.println("input needs to be a number between 1 and 9 inclusive");
+            getInput(player);
         }
         
-        return posInput;
     }
 
     /**
