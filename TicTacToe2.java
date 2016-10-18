@@ -29,8 +29,12 @@ public class TicTacToe2
             System.out.println(drawBoard());
             
         }
-            System.out.println(player + " WINS!");
         
+        if (checkWin()) {
+            System.out.println(player + " WINS!");
+        } else {
+            System.out.println("TIE :(");
+        }
         /*
         for (int i = 0; i<9; i++) {
             if (checkWin() != null) {
